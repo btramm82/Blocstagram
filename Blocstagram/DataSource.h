@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Media;
 
 @interface DataSource : NSObject
 
 +(instancetype) sharedInstance;
+
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
 
--(void)removeDataItem:(NSUInteger)indexToRemove;
+-(void)deleteMediaItem:(Media *)item;
+
 
 @end
