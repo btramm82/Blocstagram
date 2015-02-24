@@ -7,6 +7,13 @@
 //
 
 #import "ImagesTableViewController.h"
+#import "DataSource.h"
+#import "Media.h"
+#import "User.h"
+#import "Comment.h"
+
+
+
 
 @interface ImagesTableViewController ()
 
@@ -18,7 +25,6 @@
 -(id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        self.images = [NSMutableArray array];
     }
     return self;
     
@@ -26,16 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    for (int i = 1; i <= 10; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%d.jpg", i];
-        UIImage *image = [UIImage imageNamed:imageName];
-        if (image) {
-            [self.images addObject:image];
-        }
-    
-    }
-    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
     
 }
@@ -53,9 +49,16 @@
 #pragma mark - Table view data source
 
 
+-(NSArray *) items {
+    NSArray *items = [DataSource sharedInstance].mediaItems;
+    return items;
+
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.images.count;
+    return [self items].count;
 }
 
 
@@ -78,16 +81,18 @@
         [cell.contentView addSubview:imageView];
     }
     
-    UIImage *image = self.images[indexPath.row];
-    imageView.image = image;
+    Media *item = [self items][indexPath.row];
+    imageView.image = item.image;
     return cell;
 }
 
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIImage *image = self.images[indexPath.row];
-    return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
+    Media *item = [self items][indexPath.row];
+    UIImage *image = item.image;
+    
+    return image.size.height / image.size.width * CGRectGetWidth(self.view.frame);
 }
 
 
@@ -109,6 +114,8 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
+
+
 
 
 /*
