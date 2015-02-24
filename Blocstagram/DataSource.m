@@ -120,6 +120,10 @@
 
 }
 
+-(void)removeDataItem:(NSUInteger)indexToRemove {
+    [(NSMutableArray *)self.mediaItems removeObjectAtIndex:indexToRemove];
+}
+
 @end
 
 
