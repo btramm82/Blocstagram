@@ -16,6 +16,8 @@
 }
 
 @property (nonatomic, strong) NSArray *mediaItems;
+@property (nonatomic, assign) BOOL isRefreshing;
+@property (nonatomic, assign) BOOL isLoadingOlderItems;
 
 @end
 
@@ -74,6 +76,7 @@
 
 
 -(User *) randomUser {
+
     User *user = [[User alloc] init];
     
     user.userName = [self randomStringOfLength:arc4random_uniform(10)];
@@ -122,6 +125,23 @@
 
 }
 
+- (NSString *) randomSentenceWithMaximumNumberOfWords:(NSUInteger) numberOfWords {
+    NSUInteger wordCount = arc4random_uniform(20);
+    
+    NSMutableString *randomSentence = [[NSMutableString alloc] init];
+    
+    for (int i  = 0; i <= wordCount; i++) {
+        NSString *randomWord = [self randomStringOfLength:arc4random_uniform(12)];
+        if (randomWord.length > 0) {
+            [randomSentence appendFormat:@"%@ ", randomWord];
+        }
+    }
+    
+    return randomSentence;
+}
+
+
+
 -(void)removeDataItem:(NSUInteger)indexToRemove {
     [(NSMutableArray *)self.mediaItems removeObjectAtIndex:indexToRemove];
 }
@@ -158,11 +178,43 @@
     NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
     [mutableArrayWithKVO removeObject:item];
 }
+-(void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
+    if (self.isRefreshing == NO) {
+        self.isRefreshing = YES;
+        Media *media = [[Media alloc] init];
+        media.user = [self randomUser];
+        media.image = [UIImage imageNamed:@"10.jpg"];
+        media.caption = [self randomSentenceWithMaximumNumberOfWords:7];
+        
+        NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+        [mutableArrayWithKVO insertObject:media atIndex:0];
+        
+        self.isRefreshing = NO;
+        
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+    }
+}
 
-
-
-
-
+-(void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
+    if (self.isLoadingOlderItems == NO) {
+        self.isLoadingOlderItems = YES;
+        Media *media = [[Media alloc] init];
+        media.user = [self randomUser];
+        media.image = [UIImage imageNamed:@"1.jpg"];
+        media.caption = [self randomSentenceWithMaximumNumberOfWords:7];
+        
+        NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+        [mutableArrayWithKVO addObject:media];
+        
+        self.isLoadingOlderItems = NO;
+        
+        if (completionHandler) {
+            completionHandler(nil);
+        }
+    }
+}
 
 
 @end
