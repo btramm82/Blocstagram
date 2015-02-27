@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1909273D1A9FADD0002957C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909273C1A9FADD0002957C7 /* LoginViewController.m */; };
 		1937D54B1A9C4EB400DABD73 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1937D54A1A9C4EB400DABD73 /* MediaTableViewCell.m */; };
 		195A2F891A9BBC4800E0D92F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A2F881A9BBC4800E0D92F /* main.m */; };
 		195A2F8C1A9BBC4800E0D92F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A2F8B1A9BBC4800E0D92F /* AppDelegate.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1909273B1A9FADD0002957C7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1909273C1A9FADD0002957C7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1937D5491A9C4EB400DABD73 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		1937D54A1A9C4EB400DABD73 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
 		195A2F831A9BBC4800E0D92F /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +127,8 @@
 				195A2FCB1A9BD51C00E0D92F /* Comment.m */,
 				195A2FCD1A9BD60F00E0D92F /* DataSource.h */,
 				195A2FCE1A9BD60F00E0D92F /* DataSource.m */,
+				1909273B1A9FADD0002957C7 /* LoginViewController.h */,
+				1909273C1A9FADD0002957C7 /* LoginViewController.m */,
 				195A2FC71A9BD40400E0D92F /* Media.h */,
 				195A2FC81A9BD40400E0D92F /* Media.m */,
 				1937D5491A9C4EB400DABD73 /* MediaTableViewCell.h */,
@@ -297,6 +302,7 @@
 				195A2FC91A9BD40400E0D92F /* Media.m in Sources */,
 				1937D54B1A9C4EB400DABD73 /* MediaTableViewCell.m in Sources */,
 				195A2FCF1A9BD60F00E0D92F /* DataSource.m in Sources */,
+				1909273D1A9FADD0002957C7 /* LoginViewController.m in Sources */,
 				195A2FC61A9BD33F00E0D92F /* User.m in Sources */,
 				195A2F8F1A9BBC4800E0D92F /* ViewController.m in Sources */,
 				195A2F8C1A9BBC4800E0D92F /* AppDelegate.m in Sources */,

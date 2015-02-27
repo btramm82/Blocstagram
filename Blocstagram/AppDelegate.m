@@ -17,8 +17,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ImagesTableViewController alloc] init]];
+    [DataSource sharedInstance]; // Create the data source (so it can recieve the access token notification
+    
+    UINavigationController *navVC = [[UINavigationController alloc] init];
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    [navVC setViewControllers:@[loginVC] animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        ImagesTableViewController *imagesVC = [[ImagesTableViewController alloc] init];
+        [navVC setViewControllers:@[imagesVC] animated:YES];
+    }];
+    
+    self.window.rootViewController = navVC;
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -161,9 +161,9 @@
 #pragma mark - UIScrollViewDelegate
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-        static int count = 1;
-        NSLog(@"count: %d",count);
-        count++;
+//        static int count = 1;
+//        NSLog(@"count: %d",count);
+//        count++;
     [self infiniteScrollIfNecessary];
 }
 @end
