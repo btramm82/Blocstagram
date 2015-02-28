@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface User : NSObject
+@interface User : NSObject <NSCoding>
+
 
 @property (nonatomic, strong) NSString *idNumber;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSString *profilePictureURL;
-@property (nonatomic, strong) NSString *profilePictire;
+@property (nonatomic, strong) NSString *profilePicture;
 
 -(instancetype) initWithDictionary:(NSDictionary *)userDictionary;
+
 
 
 @end
