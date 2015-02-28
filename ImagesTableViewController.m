@@ -54,7 +54,7 @@
             // Someone set a brand new images array
             [self.tableView reloadData];
         } else if (kindOfChange == NSKeyValueChangeInsertion ||
-                   kindOfChange == NSKeyValueChangeRemoval ||
+                    kindOfChange == NSKeyValueChangeRemoval ||
                    kindOfChange == NSKeyValueChangeReplacement) {
             // We have an incremental change: inserted, deleted or replaced images
             
@@ -62,9 +62,9 @@
             NSIndexSet *indexSetOfChanges = change[NSKeyValueChangeIndexesKey];
             
             // Convert this NSIndexSet to and NSArray of NSIndexPaths (which is what the table view animation methods require)
-            NSMutableArray *indexPathsThatChanged = [NSMutableArray array];
+             NSMutableArray *indexPathsThatChanged = [NSMutableArray array];
             [indexSetOfChanges enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+                 NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:idx inSection:0];
                 [indexPathsThatChanged addObject:newIndexPath];
             }];
             
@@ -72,12 +72,12 @@
             [self.tableView beginUpdates];
             
             //Tell the table view what the changes are
-            if(kindOfChange == NSKeyValueChangeInsertion) {
+            if (kindOfChange == NSKeyValueChangeInsertion) {
                 [self.tableView insertRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
             } else if (kindOfChange == NSKeyValueChangeRemoval) {
                 [self.tableView deleteRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
             } else if (kindOfChange == NSKeyValueChangeReplacement) {
-                [self.tableView insertRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView reloadRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         
             // Tell the table view that we're done telling it about changes, and to complete the animation
@@ -122,6 +122,15 @@
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Media *item = [self items][indexPath.row];
     return [MediaTableViewCell heightForMediaItem:item width:CGRectGetWidth(self.view.frame)];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    if (item.image) {
+        return 350;
+    } else {
+        return 150;
+    }
 }
 
 
