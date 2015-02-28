@@ -63,9 +63,13 @@
                     if (storedMediaItems.count > 0) {
                         NSMutableArray *mutableMediaItems = [storedMediaItems mutableCopy];
                         
+                        Media *latestItem = [mutableMediaItems lastObject];
+                        
                         [self willChangeValueForKey:@"mediaItems"];
                         self.mediaItems = mutableMediaItems;
                         [self didChangeValueForKey:@"mediaItems"];
+                        NSDictionary *parameters = @{@"min_id":latestItem.idNumber};
+                        [self populateDataWithParameters:parameters completionHandler:nil];
                     } else {
                        [self populateDataWithParameters:nil completionHandler:nil];
                     }
