@@ -144,6 +144,8 @@
     NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
     [mutableArrayWithKVO removeObject:item];
 }
+
+
 -(void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
     self.thereAreNoMoreOlderMessages = NO;
     if (self.isRefreshing == NO) {
@@ -164,6 +166,8 @@
         
     }
 }
+
+
 
 -(void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
     if (self.isLoadingOlderItems == NO && self.thereAreNoMoreOlderMessages == NO) {
@@ -220,7 +224,7 @@
         
         if (mediaItem) {
             [tmpMediaItems addObject:mediaItem];
-            [self downloadImageForMediaItem:mediaItem];
+//            [self downloadImageForMediaItem:mediaItem];
         }
     }
     
@@ -268,16 +272,37 @@ NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems
 
 - (void) downloadImageForMediaItem:(Media *)mediaItem {
     if (mediaItem.mediaURL && !mediaItem.image) {
+        mediaItem.downloadState = MediaDownloadStateDownloadInProgress;
         [self.instagramOperationManager GET:mediaItem.mediaURL.absoluteString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if ([responseObject isKindOfClass:[UIImage class]]) {
                 mediaItem.image = responseObject;
+                mediaItem.downloadState = MediaDownloadStateHasImage;
                 NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
                 NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
                 [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+            } else {
+                mediaItem.downloadState = MediaDownloadStateNonRecoverableError;
             }
         } failure:^(AFHTTPRequestOperation *opeation, NSError *error) {
             NSLog(@"Error downloading image: %@", error);
         
+            mediaItem.downloadState = MediaDownloadStateNonRecoverableError;
+            
+            if ([error.domain isEqualToString:NSURLErrorDomain]) {
+                // A networking problem
+                if (error.code == NSURLErrorTimedOut ||
+                    error.code == NSURLErrorCancelled ||
+                    error.code == NSURLErrorCannotConnectToHost ||
+                    error.code == NSURLErrorNetworkConnectionLost ||
+                    error.code == NSURLErrorNotConnectedToInternet ||
+                    error.code == kCFURLErrorCallIsActive ||
+                    error.code == kCFURLErrorDataNotAllowed ||
+                    error.code == kCFURLErrorRequestBodyStreamExhausted) {
+                    // It might work if we try again
+                
+                    mediaItem.downloadState = MediaDownloadStateNeedsImage;
+                }
+            }
         }];
     }
 }
