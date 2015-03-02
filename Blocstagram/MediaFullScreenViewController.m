@@ -55,7 +55,12 @@
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
     
+    self.shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.shareButton setTitle:@"Share" forState:UIControlStateNormal];
+    [self.shareButton addTarget:self action:@selector(shareTapped) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.shareButton];
     
+   
 }
 
 
@@ -73,21 +78,10 @@
     self.scrollView.minimumZoomScale = minScale;
     self.scrollView.maximumZoomScale = 1;
     
-    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [shareButton setTitle:@"Share" forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(shareTapped) forControlEvents:UIControlEventTouchUpInside];
-    
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    
-    if (viewWidth >= 320) {
-        shareButton.frame = CGRectMake(250, 20 , 70, 40);
-    } else {
-        shareButton.frame = CGRectMake(10, 20 , 70, 40);
-    }
-    shareButton.backgroundColor = [UIColor clearColor];
-    
-    shareButton.translatesAutoresizingMaskIntoConstraints = YES;
-    [self.view addSubview:shareButton];
+    self.shareButton.frame = CGRectMake(viewWidth - 80, 20 , 70, 40);
+    self.shareButton.backgroundColor = [UIColor clearColor];
+    self.shareButton.translatesAutoresizingMaskIntoConstraints = YES;
 }
 
 
