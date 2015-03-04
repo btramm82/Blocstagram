@@ -91,7 +91,7 @@
     
 }
 
--(void) CameraButtonPressed:(UIButton *)sender {
+-(void) cameraButtonPressed:(UIButton *)sender {
     [self.delegate cameraButtonPressedOnToolbar:self];
 }
 
