@@ -232,7 +232,7 @@
     }];
 }
 
-#pragma mark - BLCImageLibraryViewControllerDelegate
+#pragma mark - ImageLibraryViewControllerDelegate
 
 - (void) imageLibraryViewController:(ImageLibraryViewController *)imageLibraryViewController didCompleteWithImage:(UIImage *)image {
     [self.delegate cameraViewController:self didCompleteWithImage:image];

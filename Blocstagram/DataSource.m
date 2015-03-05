@@ -32,6 +32,8 @@
 
 @implementation DataSource
 
+NSString *const ImageFinishedNotification = @"ImageFinishedNotification";
+
 +(instancetype) sharedInstance {
     static dispatch_once_t once;
     static id sharedInstance;
@@ -145,6 +147,9 @@
     [mutableArrayWithKVO removeObject:item];
 }
 
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ImageFinishedNotification object:self];
+}
 
 -(void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
     self.thereAreNoMoreOlderMessages = NO;

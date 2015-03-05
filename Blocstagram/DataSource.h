@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+
+
 @class Media;
 
 typedef void (^NewItemCompletionBlock)(NSError *error);
 
 @interface DataSource : NSObject
+
+extern NSString *const ImageFinishedNotification;
 
 +(NSString *) instagramClientID;
 

@@ -209,7 +209,7 @@
     [self.navigationController pushViewController:cropVC animated:YES];
 }
 
-#pragma mark - BLCCropImageViewControllerDelegate
+#pragma mark - CropImageViewControllerDelegate
 
 - (void) cropControllerFinishedWithImage:(UIImage *)croppedImage {
     [self.delegate imageLibraryViewController:self didCompleteWithImage:croppedImage];
