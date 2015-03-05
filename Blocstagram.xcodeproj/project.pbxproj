@@ -43,6 +43,11 @@
 		19FCDED11AA4E5DE004142AD /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FCDED01AA4E5DD004142AD /* CircleSpinnerView.m */; };
 		19FCDED41AA4EFF5004142AD /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FCDED31AA4EFF5004142AD /* LikeButton.m */; };
 		19FD681F1AA7B9BA00C1A977 /* PostToInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FD681E1AA7B9BA00C1A977 /* PostToInstagramViewController.m */; };
+		19FD68211AA7E23500C1A977 /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FD68201AA7E23500C1A977 /* UserTest.m */; };
+		19FD68231AA7E5BC00C1A977 /* CommentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FD68221AA7E5BC00C1A977 /* CommentTests.m */; };
+		19FD68251AA7E69A00C1A977 /* MediaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FD68241AA7E69A00C1A977 /* MediaTests.m */; };
+		19FD68271AA813A900C1A977 /* ComposeCommentViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FD68261AA813A900C1A977 /* ComposeCommentViewTest.m */; };
+		19FD68291AA815BB00C1A977 /* MediaTableViewCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FD68281AA815BB00C1A977 /* MediaTableViewCellTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +122,11 @@
 		19FCDED31AA4EFF5004142AD /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
 		19FD681D1AA7B9BA00C1A977 /* PostToInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostToInstagramViewController.h; sourceTree = "<group>"; };
 		19FD681E1AA7B9BA00C1A977 /* PostToInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostToInstagramViewController.m; sourceTree = "<group>"; };
+		19FD68201AA7E23500C1A977 /* UserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTest.m; sourceTree = "<group>"; };
+		19FD68221AA7E5BC00C1A977 /* CommentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTests.m; sourceTree = "<group>"; };
+		19FD68241AA7E69A00C1A977 /* MediaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTests.m; sourceTree = "<group>"; };
+		19FD68261AA813A900C1A977 /* ComposeCommentViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentViewTest.m; sourceTree = "<group>"; };
+		19FD68281AA815BB00C1A977 /* MediaTableViewCellTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCellTest.m; sourceTree = "<group>"; };
 		1D33DFD8AEEE94191067A614 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		24F742F290190B5B5C80F0D2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +236,11 @@
 			isa = PBXGroup;
 			children = (
 				195A2FA21A9BBC4800E0D92F /* BlocstagramTests.m */,
+				19FD68261AA813A900C1A977 /* ComposeCommentViewTest.m */,
+				19FD68221AA7E5BC00C1A977 /* CommentTests.m */,
+				19FD68281AA815BB00C1A977 /* MediaTableViewCellTest.m */,
+				19FD68241AA7E69A00C1A977 /* MediaTests.m */,
+				19FD68201AA7E23500C1A977 /* UserTest.m */,
 				195A2FA01A9BBC4800E0D92F /* Supporting Files */,
 			);
 			path = BlocstagramTests;
@@ -446,6 +461,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19FD68291AA815BB00C1A977 /* MediaTableViewCellTest.m in Sources */,
+				19FD68211AA7E23500C1A977 /* UserTest.m in Sources */,
+				19FD68231AA7E5BC00C1A977 /* CommentTests.m in Sources */,
+				19FD68251AA7E69A00C1A977 /* MediaTests.m in Sources */,
+				19FD68271AA813A900C1A977 /* ComposeCommentViewTest.m in Sources */,
 				195A2FA31A9BBC4800E0D92F /* BlocstagramTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
